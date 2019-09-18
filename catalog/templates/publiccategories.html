@@ -1,0 +1,24 @@
+{% extends "categories.html" %}
+{% block title %} <title>Categories</title> {% endblock %}
+
+{% block content %}
+<div class='content'>
+
+  <div class='cate'>
+    <h1>Categories</h1> {% if categories %} {% for i in categories %}
+    <h2><a href="/catalog/{{i.title}}/items">{{ i.title }}</a></h2> {% endfor %} {% else %}
+    <p>There is no categories now.</p>
+    {% endif %}
+
+  </div>
+
+  <div class='items'>
+    <!-- <a href='/catalog/new'>Add Item</a> -->
+    <h1>Latest Items</h1> {% if latestItems %} {% for i in latestItems %}
+    <h2><a href="/catalog/{{ getCategoryname(i) }}/{{i.title}}">{{i.title}}</a></h2> {% endfor %} {% else %}
+    <p>There is no latest items.</p>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

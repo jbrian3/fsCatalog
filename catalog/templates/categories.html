@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+<head>
+{% block head %}
+<link href='https://fonts.googleapis.com/css?family=Nunito+Sans|Roboto' rel="stylesheet">
+<link href="{{url_for('static', filename='styles.css')}}" rel='stylesheet' type=text/css>
+{% block title %} <title>Categories</title> {% endblock %}
+{% endblock %}
+</head>
+
+<body>
+  <header>
+    <div class='container'>
+<div>
+  <a href='/' class='name'>Catalog App</a>
+</div>
+
+<div class='login'>
+  {% if is_authenticated() %}
+  <button class='loginbutton' id='login' type="button" onclick="loginFunction()">Logout</button>
+  <script type='text/javascript'>function loginFunction() {
+    document.getElementById('login').onclick = function () {
+      location.href = '/gdisconnect';
+    };
+  }
+</script>
+{% else %}
+<button class='loginbutton' id='login' type="button" onclick="loginFunction()">Login</button>
+<script type='text/javascript'>function loginFunction() {
+  document.getElementById('login').onclick = function () {
+    location.href = '/login';
+  };
+}
+</script>
+{% endif %}
+</div>
+</div>
+</header>
+
+{% block content %}
+<div class='content'>
+
+  <div class='cate'>
+    <h1>Categories</h1> {% if categories %} {% for i in categories %}
+    <h2><a href="/catalog/{{i.title}}/items">{{ i.title }}</a></h2> {% endfor %} {% else %}
+    <p>There is no categories now.</p>
+    {% endif %}
+
+  </div>
+
+  <div class='items'>
+    <a href='/catalog/new'>Add Item</a>
+    <h1>Latest Items</h1> {% if latestItems %} {% for i in latestItems %}
+    <h2><a href="/catalog/{{ getCategoryname(i) }}/{{i.title}}">{{i.title}}</a></h2> {% endfor %} {% else %}
+    <p>There is no latest items.</p>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}
+</body>
+
+
+</html>

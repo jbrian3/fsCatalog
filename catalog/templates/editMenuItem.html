@@ -1,0 +1,41 @@
+{% extends "categories.html" %}
+{% block title %} <title>Edit Item</title> {% endblock %}
+
+{% block content %}
+<h1>Edit Item</h1>
+
+<form action="{{url_for('editMenuItem', itemname=itemname)}}" method="post">
+
+<dl>
+<dt>Title</dt>
+<dd><input type='text' size='30' name='title' placeholder='{{item.title}}'></dd>
+
+<dt>Description</dt>
+<dd><textarea type='text' rows='5' cols="40" name='description' placeholder='{{item.description}}'></textarea></dd>
+
+<dt>Category</dt>
+
+<dd>
+
+<select name='categoryname'>
+{% for c in categories %}
+
+{% if c.title == category.title %}
+<option value="{{ c.title }}" selected='selected'>{{c.title}}</option>
+{% else %}
+<option value="{{ c.title }}">{{c.title}}</option>
+{% endif %}
+
+{% endfor %}
+</select>
+
+</dd>
+
+</dl>
+
+<input type='submit' value="Edit">
+<a href='{{url_for('itemDetail', categoryname=category.title, itemname=itemname)}}'>Cancel</a>
+
+</form>
+
+{% endblock %}

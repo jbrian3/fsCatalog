@@ -1,0 +1,27 @@
+{% extends "categories.html" %}
+{% block title %} <title>Item Detail</title> {% endblock %}
+
+{% block content %}
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+
+<div class='detail'>
+<h1>{{ item.title }}</h1>
+
+<p>Description: {{ item.description }}</p>
+<a href="/catalog/{{item.title}}/edit">Edit</a>
+<a href="/catalog/{{item.title}}/delete">Delete</a>
+
+</div>
+{% endblock %}
