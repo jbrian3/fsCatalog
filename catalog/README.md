@@ -2,7 +2,7 @@ The Item Catalog project consists of developing an application that provides a l
 
 Here is one picture of the project:
 
-![first page](/img/catalog.png)
+![first page](/catalog/img/catalog.png)
 
 In this project, functions including:
 
