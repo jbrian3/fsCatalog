@@ -1,4 +1,4 @@
-bleach==2.1.1
+bleach==3.3.0
 chardet==2.3.0
 click==6.7
 Flask==0.12.2
